@@ -24,24 +24,7 @@
       --lake-weak: #D6ECFF; /* pale lake */
       --ring: rgba(181, 126, 220, .35);
       --shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    
-
-/* Pills (skill tags) */
-.pill {
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: var(--lake-weak);
-  color: #0b3b66;
-  font-weight: 700;
-  font-size: 12px;
-  border: 1px solid color-mix(in oklab, var(--lake) 25%, transparent);
-}
-
-/* Dark mode text color for contrast */
-@media (prefers-color-scheme: dark) {
-  .pill { color: #d6ecff; }
-}
+    }  
 
     @media (prefers-color-scheme: light) {
       :root { --bg:#faf9fd; --surface:#ffffff; --text:#17111f; --muted:#6b6476; --card:#ffffff; --brand-weak:#F2E9FE; }
@@ -82,8 +65,20 @@
     /* About */
     .about { grid-column: auto; }
     .links { display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
-    .pill { padding:6px 10px; border-radius:999px; background:var(--brand-weak); color:#3b2a4b; font-weight:700; font-size:12px; }
-    @media (prefers-color-scheme: dark) { .pill { color:#eaddff; } }
+    .pill {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--lake-weak);
+  color: #0b3b66;
+  font-weight: 700;
+  font-size: 12px;
+  border: 1px solid color-mix(in oklab, var(--lake) 25%, transparent);
+}
+
+/* Dark mode text color for contrast */
+@media (prefers-color-scheme: dark) {
+  .pill { color: #d6ecff; }
+}
 
     /* Sections */
     section { padding:32px 0; }
