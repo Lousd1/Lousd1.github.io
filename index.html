@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Laïla Soldà — Portfolio</title>
+  <meta name="description" content="From communications to data — selected projects, creations, and contact links." />
+  <meta property="og:title" content="Laïla Soldà — Portfolio" />
+  <meta property="og:description" content="From communications to data — selected projects, creations, and contact links." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>👋</text></svg>">
+
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --surface: #111218;
+      --text: #e5e7eb;
+      --muted: #b9bed0;
+      --brand: #B57EDC; /* lavender */
+      --brand-weak: #EADCF8; /* pale lavender */
+      --card: #161821;
+      --ring: rgba(181, 126, 220, .35);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg:#faf9fd; --surface:#ffffff; --text:#17111f; --muted:#6b6476; --card:#ffffff; --brand-weak:#F2E9FE; }
+      header.nav { box-shadow: 0 1px 0 rgba(17,24,39,.06); }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--text); line-height:1.6; }
+
+    /* Top nav */
+    header.nav { position:sticky; top:0; z-index:30; backdrop-filter:saturate(1.5) blur(8px); background:color-mix(in oklab, var(--surface) 80%, transparent); }
+    .nav-inner { max-width:1000px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:12px 20px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px; }
+    .brand .avatar { width:36px; height:36px; border-radius:12px; background:linear-gradient(135deg, var(--brand), #EADCF8); display:grid; place-items:center; color:#0b0c10; font-weight:900; box-shadow:var(--shadow); }
+    nav a { color:var(--muted); text-decoration:none; margin-left:18px; font-weight:600; }
+    nav a:hover, nav a:focus { color:var(--text); outline:none; }
+
+    /* Container */
+    .container { max-width:1000px; margin:0 auto; padding:24px 20px; }
+
+    /* Hero */
+    .hero { display:grid; grid-template-columns: 1fr; gap:28px; align-items:stretch; padding:48px 0 12px; }
+    .hero .card { background:var(--card); border:1px solid color-mix(in oklab, var(--text) 12%, transparent); border-radius:22px; padding:28px; box-shadow:var(--shadow); }
+    .kicker { color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:12px; margin-bottom:10px; }
+    h1 { font-size:clamp(28px, 5vw, 48px); line-height:1.15; margin:.2em 0 .4em; }
+    .lead { font-size:clamp(16px, 2.6vw, 19px); color:var(--muted); }
+    .cta { margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; gap:10px; border-radius:14px; padding:12px 16px; font-weight:700; text-decoration:none; border:1px solid transparent; box-shadow:var(--shadow); }
+    .btn.primary { background:linear-gradient(135deg, var(--brand), #EADCF8); color:#0b0c10; }
+    .btn.ghost { background:var(--surface); color:var(--text); border-color:color-mix(in oklab, var(--text) 12%, transparent); }
+    .btn:focus { outline:2px solid var(--ring); outline-offset:2px; }
+
+    /* Cards grid */
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap:18px; }
+    .card { background:var(--card); border:1px solid color-mix(in oklab, var(--text) 12%, transparent); border-radius:20px; padding:20px; box-shadow:var(--shadow); }
+
+    /* About */
+    .about { grid-column: auto; }
+    .links { display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+    .pill { padding:6px 10px; border-radius:999px; background:var(--brand-weak); color:#3b2a4b; font-weight:700; font-size:12px; }
+    @media (prefers-color-scheme: dark) { .pill { color:#eaddff; } }
+
+    /* Sections */
+    section { padding:32px 0; }
+    section h2 { font-size:clamp(22px, 4vw, 28px); margin:0 0 12px; }
+    .subtle { color:var(--muted); font-size:14px; margin-top:-6px; }
+
+    /* Projects */
+    .projects { display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; }
+    .project { display:flex; flex-direction:column; gap:10px; }
+    .project .thumb { aspect-ratio: 16/9; background:linear-gradient(135deg, #0ea5e9, #5eead4); border-radius:14px; overflow:hidden; }
+    .project .title { font-weight:800; }
+    .project .meta { color:var(--muted); font-size:13px; }
+
+    /* Gallery */
+    .gallery { display:grid; grid-template-columns: repeat(6, 1fr); gap:10px; }
+    .tile { aspect-ratio:1/1; background:linear-gradient(135deg, #f97316, #fde047); border-radius:14px; }
+
+    /* Contact */
+    .contact-card { display:grid; grid-template-columns: 1fr; gap:16px; }
+
+    /* Footer */
+    footer { padding:32px 20px; color:var(--muted); text-align:center; }
+
+    /* Responsive */
+    @media (max-width: 880px) {
+      .projects { grid-template-columns: 1fr 1fr; }
+      .gallery { grid-template-columns: repeat(3, 1fr); }
+      .contact-card { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .projects { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
+
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <div class="brand"><div class="avatar" aria-hidden="true">LS</div> <span>Laïla Soldà</span></div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#creations">Creations</a>
+        <a href="#videos">Videos</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container" role="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="intro-title">
+      <div class="card">
+        <p class="kicker">Hello, I’m</p>
+        <h1 id="intro-title">Laïla Soldà — from communications to data</h1>
+        <p class="lead">Former Communication Manager, now certified in Data Analysis. Curious by nature and driven by detail, I connect creativity with data to unlock business opportunities. Coffee fuels my focus, travel inspires adaptability, and cinema sharpens my eye for storytelling 🌼.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Contact me</a>
+          <a class="btn ghost" href="#projects" aria-label="See my projects">See projects →</a>
+        </div>
+      </div>
+      <div class="card" aria-label="About">
+        <div class="grid">
+          <div class="about">
+            <h2 id="about">About me</h2>
+            <p>Former Communication Manager, now certified in Data Analysis. Curious by nature and driven by detail, I thrive on connecting creativity with data to unlock business opportunities. Coffee fuels my focus, travel inspires my adaptability, and cinema sharpens my eye for storytelling 🌼.</p>
+            <div class="links">
+              <span class="pill">BigQuery SQL</span>
+              <span class="pill">Python</span>
+              <span class="pill">Looker Studio</span>
+              <span class="pill">Power BI</span>
+              <span class="pill">Data Visualization</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section aria-labelledby="projects-title">
+      <h2 id="projects">Projects</h2>
+      <p class="subtle">Selected work.</p>
+      <div class="projects">
+        <article class="card project">
+          <a class="thumb" href="https://lookerstudio.google.com/reporting/494d411b-2cd2-48cb-8a12-1781b26d1f0d/page/DzwWF" target="_blank" rel="noopener" aria-label="Streaming Smarter dashboard" style="background:#000 url('assets/streaming-smarter.jpg') center/cover no-repeat;"></a>
+          <a class="title" href="https://lookerstudio.google.com/reporting/494d411b-2cd2-48cb-8a12-1781b26d1f0d/page/DzwWF" target="_blank" rel="noopener">Streaming Smarter</a>
+          <p class="meta">Comparative analysis of Netflix, Disney+, Hulu, and Prime Video catalogs; unified datasets, API-enriched gaps, and surfaced trends to guide content & expansion strategy • Group final project • BigQuery, Python, Looker Studio</p>
+        </article>
+        <article class="card project">
+          <a class="thumb" href="https://www.portsainttropez.com" target="_blank" rel="noopener" aria-label="Port Saint‑Tropez website" style="background:linear-gradient(135deg,#0ea5e9,#5eead4);"></a>
+          <a class="title" href="https://www.portsainttropez.com" target="_blank" rel="noopener">Port Saint‑Tropez — Site & content</a>
+          <p class="meta">Site management & video/social production • Communications → Data mindset</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CREATIONS / GALLERY -->
+    <section aria-labelledby="creations-title">
+      <h2 id="creations">Creations</h2>
+      <p class="subtle">Logos, art, snapshots, UI bits — anything you’re proud of.</p>
+      <div class="gallery">
+        <div class="tile" title="Creation 1"></div>
+        <div class="tile" title="Creation 2"></div>
+        <div class="tile" title="Creation 3"></div>
+        <div class="tile" title="Creation 4"></div>
+        <div class="tile" title="Creation 5"></div>
+        <div class="tile" title="Creation 6"></div>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section aria-labelledby="videos-title">
+      <h2 id="videos">Videos</h2>
+      <div class="grid" style="grid-template-columns: repeat(12, 1fr); gap: 18px;">
+        <div class="card" style="grid-column: span 12;">
+          <h3 style="margin:0 0 8px;">Published videos (YouTube / Instagram)</h3>
+          <p class="subtle">Videos already public on official accounts. Links open the original platform.</p>
+          <div class="projects" style="grid-template-columns: repeat(3, 1fr);">
+            <!-- Example YouTube card -->
+            <article class="project">
+              <a class="thumb" href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" rel="noopener" style="background:#000 url('assets/video-thumb.jpg') center/cover no-repeat;"></a>
+              <a class="title" href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" rel="noopener">Video title (YouTube)</a>
+              <p class="meta">Port of Saint‑Tropez • Official video</p>
+            </article>
+            <!-- Example Instagram card -->
+            <article class="project">
+              <a class="thumb" href="https://www.instagram.com/p/POST_ID/" target="_blank" rel="noopener" style="background:#000 url('assets/ig-thumb.jpg') center/cover no-repeat;"></a>
+              <a class="title" href="https://www.instagram.com/p/POST_ID/" target="_blank" rel="noopener">Video title (Instagram)</a>
+              <p class="meta">Port of Saint‑Tropez • Reels</p>
+            </article>
+          </div>
+        </div>
+        <div class="card" style="grid-column: span 12;">
+          <h3 style="margin:0 0 8px;">Videos on request (not published)</h3>
+          <p class="subtle">These contents belong to the client. I can share a private excerpt upon legitimate request.</p>
+          <p><a class="btn ghost" href="https://www.linkedin.com/in/laila-solda" target="_blank" rel="noopener">Request private access</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section aria-labelledby="contact-title">
+      <h2 id="contact">Contact</h2>
+      <div class="card contact-card">
+        <div>
+          <h3 style="margin:0 0 6px;">Let’s work together</h3>
+          <p class="subtle">Available for freelance and collaborations.</p>
+          <ul>
+            <li>GitHub: <a href="https://github.com/Lousd1" target="_blank" rel="noopener">@Lousd1</a></li>
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/laila-solda" target="_blank" rel="noopener">Laïla Soldà</a></li>
+            <li>Location: France</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Laïla Soldà. All rights reserved.
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- SEO: JSON-LD Person schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Laïla Soldà",
+    "url": "https://lailasolda.com",
+    "sameAs": [
+      "https://github.com/Lousd1",
+      "https://www.linkedin.com/in/laila-solda"
+    ],
+    "jobTitle": "Data Analyst",
+    "description": "From communications to data — portfolio and contact"
+  }
+  </script>
+</body>
+</html>
