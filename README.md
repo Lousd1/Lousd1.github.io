@@ -2,7 +2,7 @@
 
 From communications to data. This repo hosts my portfolio & digital business card.
 
-**Live site:** (https://lousd1.github.io/)
+**Live site:** ([https://lousd1.github.io/](https://lousd1.github.io/Portfolio/))
 
 ## Stack
 - Static HTML/CSS (no build step)
